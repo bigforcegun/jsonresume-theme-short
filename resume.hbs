@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+
+    <title>{{#resume.basics}}{{name}}{{/resume.basics}}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+            {{{css}}}
+    </style>
+    <style media="print">
+        body {
+            font-size: 12px;
+        }
+    </style>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<main role="main" class="container" id="resume2">
+    {{#resume.basics}}
+        <section class="container-fluid heading">
+            <h1 class="main">
+                <span class="name">
+                    {{name}}
+                </span>
+                <span class="label float-right">
+                    {{label}}
+                </span>
+            </h1>
+            <div class="row about">
+                <div class="col-sm-8 summary">GPA: 0
+                    {{#if summary}}
+                        <p>{{md summary}}</p>
+                    {{/if}}
+                </div>
+                <div class="col-sm-4 contacts">
+                    <p></p>
+                    <div>
+                        {{#if phone}}
+                            <div class="detail">
+                                <strong>{{t 'phone_label' }}</strong>: {{phone}}
+                            </div>
+                        {{/if}}
+                        {{#if email}}
+                            <div class="detail">
+                                <strong>{{t 'email_label' }}</strong>: <a href="mailto:{{email}}">{{email}}</a>
+                            </div>
+                        {{/if}}
+                    </div>
+                    {{#if profiles.length}}
+                        {{#each profiles}}
+                            <div class="profile">
+                                {{#if network}}
+                                    {{network}}:
+                                {{/if}}
+                                {{#if username}}
+                                    <span class="username">
+                                        {{#if url}}
+                                            <a href="{{url}}">{{username}}</a>
+                                        {{else}}
+                                            {{username}}
+                                        {{/if}}
+                                    </span>
+                                {{/if}}
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+        </section>
+    {{/resume.basics}}
+
+
+    {{#if resume.skills.length}}
+        <section class="container-fluid" id="skills">
+            <h2>{{t 'skills_label'}}</h2>
+            <div class="row">
+                {{#each resume.skills}}
+                    <div class="col col-sm-6 item">
+                        {{#if name}}
+                            <div class="name">
+                                {{name}}
+                            </div>
+                        {{/if}}
+                        {{#if keywords.length}}
+                            <div class="keywords">
+                                {{#each keywords}}
+                                    {{.}}{{#if @last}}{{else}},{{/if}}
+                                {{/each}}
+                            </div>
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+    {{/if}}
+
+    {{#if resume.work.length}}
+        <section class="container-fluid" id="experience">
+            <h2>{{t 'experience_label'}}</h2>
+            {{#each resume.work}}
+                <section>
+                    <header class="row">
+                        <div class="col">
+                            {{#if position}}
+                                <div class="position">
+                                    <strong>{{position}}</strong>
+                                </div>
+                            {{/if}}
+                            {{#if company}}
+                                <div class="company-name">
+                                    {{company}}
+                                </div>
+                            {{/if}}
+                        </div>
+
+                        <div class="col">
+                            <div class="float-right">
+                                {{#if startDate}}
+                                    <span class="startDate"> {{date startDate}} </span>
+                                {{/if}}
+                                {{#if endDate}}
+                                    <span class="endDate"> - {{date endDate}}</span>
+                                {{else}}
+                                    <span class="endDate"> - {{t 'present_label'}}  </span>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </header>
+                    {{#if summary}}
+                        <!-- <div class="summary">
+                            <p>{{md summary}}</p>
+                        </div>-->
+                    {{/if}}
+                    {{#if highlights.length}}
+                        <ul class="highlights">
+                            {{#each highlights}}
+                                <li>{{.}}</li>
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </section>
+            {{/each}}
+        </section>
+    {{/if}}
+
+
+    {{#if resume.education.length}}
+        <section class="container-fluid" id="education">
+            <h2>{{t 'education_label'}}</h2>
+            <ul>
+                {{#each resume.education}}
+                    <li class="item">
+
+                        {{#if institution}}
+                            <span class="name">{{institution}}</span>
+                        {{/if}}
+                        <span class="qualification">
+                        {{#if studyType}}
+                            <span class="studyType"> {{studyType}} </span>
+                        {{/if}}
+                            {{#if area}}
+                                <span class="area">	- {{area}} </span>
+                            {{/if}}
+                            {{#if gpa}}
+                                <span class="gpa"> GPA: {{gpa}} </span>
+                            {{/if}}
+                        </span>
+                        <span class="dates">
+                        {{#if startDate}}
+                            <span class="startDate"> {{date startDate}} </span>
+                        {{/if}}
+                            {{#if endDate}}
+                                <span class="endDate"> - {{date endDate}} </span>
+                            {{else}}
+                                <span class="endDate"> - {{t 'present_label'}} </span>
+                            {{/if}}
+                        </span>
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+
+    {{#if resume.languages.length}}
+        <section class="container-fluid" id="languages">
+            <h2>{{t 'languages_label'}}</h2>
+            <ul>
+                {{#each resume.languages}}
+                    <li>
+                    <span class="item">
+                        {{#if language}}
+                            <span class="language">
+                                {{language}}
+                            </span>
+                        {{/if}}
+                        {{#if fluency}}
+                            <span class="fluency">
+                                <em>{{fluency}}</em>
+                            </span>
+                        {{/if}}
+                    </span>
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+</main>
+</body>
+</html>

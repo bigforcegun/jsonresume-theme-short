@@ -2,6 +2,7 @@ node_modules/
 npm-debug.log
 node_modules/
 resume.html
+public
 resume.pdf
 resume.json
 .DS_Store
