@@ -87,13 +87,12 @@ h2 {
 }
 
 .profile {
-	display: inline-block;
 	margin: 0 1em 0 0;
 }
 
 .profile strong,
 .profile span {
-	display: inline-block;
+
 	margin: 0 1em 0 0;
 }
 /* section / line breaks */

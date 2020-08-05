@@ -88,5 +88,8 @@ Handlebars.registerHelper('md', function (plaintext) {
 });
 
 module.exports = {
-	render: render
+	render: render,
+	pdfRenderOptions: {
+		mediaType: 'print'
+	}
 };

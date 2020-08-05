@@ -36,7 +36,7 @@
                 </span>
             </h1>
             <div class="row about">
-                <div class="col-sm-8 summary">GPA: 0
+                <div class="col-sm-8 summary">
                     {{#if summary}}
                         <p>{{md summary}}</p>
                     {{/if}}
@@ -62,13 +62,13 @@
                                     {{network}}:
                                 {{/if}}
                                 {{#if username}}
-                                    <span class="username">
+
                                         {{#if url}}
                                             <a href="{{url}}">{{username}}</a>
                                         {{else}}
                                             {{username}}
                                         {{/if}}
-                                    </span>
+
                                 {{/if}}
                             </div>
                         {{/each}}
